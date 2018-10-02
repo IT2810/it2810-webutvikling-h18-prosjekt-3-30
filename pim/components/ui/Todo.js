@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class ScreenOne extends React.Component {
+export default class Todo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is ScreenOne.js!</Text>
+        <Text>This is TODOs!</Text>
       </View>
     );
   }
