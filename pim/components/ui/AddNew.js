@@ -52,11 +52,11 @@ export default class ContactDetails extends React.Component {
     this.props.navigation.navigate("List");
   }
 
-  changeName(name) {
+  onChangeName(name) {
     this.setState({name});
   }
 
-  changePhone(phone) {
+  onChangePhone(phone) {
     this.setState({phone});
   }
 
@@ -66,9 +66,9 @@ export default class ContactDetails extends React.Component {
         <Icon name='ios-arrow-back' type='ionicon' size={26} color={'lightgray'} onPress={() => {this.onArrowPress()}}/>
         <View style={styles.details}>
           <FormLabel>Full name</FormLabel>
-          <FormInput onChangeText={(name) => {this.changeName(name)}}/>
+          <FormInput onChangeText={(name) => {this.onChangeName(name)}}/>
           <FormLabel>Phone</FormLabel>
-          <FormInput onChangeText={(phone) => {this.changePhone(phone)}}/>
+          <FormInput onChangeText={(phone) => {this.onChangePhone(phone)}}/>
           <View style={styles.button}>
             <Button raised icon={{name: 'plus', type: 'feather'}} onPress={() => {this.createNewContact()}} title='ADD NEW' />
           </View>

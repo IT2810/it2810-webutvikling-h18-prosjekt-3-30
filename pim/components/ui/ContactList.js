@@ -45,7 +45,7 @@ export default class ContactList extends React.Component {
     this.props.navigation.navigate("Add");
   }
 
-  pareseData = () => {
+  parseData = () => {
     if (this.state.list) {
       return this.state.list.map((item, i) => {
         return (
@@ -71,7 +71,7 @@ export default class ContactList extends React.Component {
             />
           }
         >
-          {this.pareseData()}
+          {this.parseData()}
         </ScrollView>
         <View style={styles.button}>
           <Button raised onPress={() => {this.onButtonPress()}} title='ADD NEW CONTACT' />
