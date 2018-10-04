@@ -8,7 +8,8 @@ import {
    ProgressViewIOS,
    Platform,
    TextInput,
-   Slider} from 'react-native';
+   Slider,
+    Button} from 'react-native';
 
 import Expo from "expo";
 import {Pedometer} from "expo";
@@ -23,7 +24,8 @@ export default class Home extends React.Component {
     pastStepCount: 0,
     currentStepCount: 0,
     goalStepCount: 0,
-    sliderValue: 1
+    sliderValue: 1,
+    inputText: '111'
   }
 
  //Documented here https://docs.expo.io/versions/v30.0.0/sdk/pedometer
@@ -78,22 +80,28 @@ export default class Home extends React.Component {
     this._subscription = null;
   };
 
+  handleGoalChange = () => {
+    if (this.state.goalStepCount !== parseInt(this.state.inputText)){
+      this.setState({goalStepCount: parseInt(this.state.inputText)})
+    }
+  }
+
 
 //TODO The slider can be made a component – not sure if necessary
   render() {
     return (
       <View style={styles.container}>
-        <Slider style={styles.slider}
-          value = {0}
-          minimumValue = {0}
-          step = {500}
-          maximumValue = {10000}
-          onValueChange = {sliderValue => this.setState({sliderValue})}
-          onSlidingComplete = {goalStepCount => this.setState({goalStepCount})}
+        <TextInput
+          keyboardType = 'numeric'
+          onChangeText = {(inputText) => this.setState({inputText})}
+          value = {this.state.inputText}
+          maxLength={6}
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         />
-        <Text>
-          sliderValue: {this.state.sliderValue}
-        </Text>
+        <Button
+          onPress={() => {this.handleGoalChange()}}
+          title="Set Goal"
+        />
         <Text>
           Steps taken in the last 24 hours:
           {this.state.pastStepCount}
