@@ -8,8 +8,8 @@ import {
    ProgressViewIOS,
    Platform,
    TextInput,
-   Slider,
-    Button} from 'react-native';
+   Button,
+   AsyncStorage} from 'react-native';
 
 import Expo from "expo";
 import {Pedometer} from "expo";
@@ -24,13 +24,34 @@ export default class Home extends React.Component {
     pastStepCount: 0,
     currentStepCount: 0,
     goalStepCount: 0,
-    sliderValue: 1,
-    inputText: '111'
+    inputText: ''
+  }
+
+  componentDidUpdate(){
+    this._storeData();
+  }
+
+  _storeData() {
+    AsyncStorage.setItem('goal', String(this.state.goalStepCount))
+    console.log("Data stored");
+    console.log(String(this.state.goalStepCount));
+  }
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('goal');
+      console.log("Data retrieved");
+      console.log(value);
+      this.setState({goalStepCount: parseInt(value)})
+    } catch (error) {
+      console.error(error);
+    }
   }
 
  //Documented here https://docs.expo.io/versions/v30.0.0/sdk/pedometer
   componentDidMount() {
     this._subscribe();
+    this._retrieveData();
   }
 
    //Documented here https://docs.expo.io/versions/v30.0.0/sdk/pedometer
@@ -81,9 +102,8 @@ export default class Home extends React.Component {
   };
 
   handleGoalChange = () => {
-    if (this.state.goalStepCount !== parseInt(this.state.inputText)){
       this.setState({goalStepCount: parseInt(this.state.inputText)})
-    }
+      this._storeData();
   }
 
 
