@@ -1,17 +1,15 @@
 import React from 'react';
-import {Container, Icon, Text, Button} from 'native-base';
+import {Icon, Button} from 'react-native-elements';
 
 export default class AddTodoButton extends React.Component{
     render(){
         const {onAddNewTodo} = this.props;
         return(
-            <Container>
-                <Button
-                    onPress ={() => onAddNewTodo(show = true)}>
-                    <Icon name='add' />
-                    <Text>Add TODOs</Text>
-                </Button>
-            </Container>
+            <Button
+                title={"Add todo"}
+                onPress ={() => onAddNewTodo(show = true)}>
+                <Icon name='add' />
+            </Button>
         );
     }
 }
