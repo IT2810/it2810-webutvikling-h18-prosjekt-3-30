@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, AsyncStorage, RefreshControl } from 'react-native';
 import { ListItem, Icon, Button } from 'react-native-elements';
 
+import ContactDetails from './ContactDetails';
+
 
 export default class ContactList extends React.Component {
   constructor() {
@@ -37,8 +39,8 @@ export default class ContactList extends React.Component {
     this.parseJson();
   }
 
-  onContactPress = () => {
-    this.props.navigation.navigate("Details");
+  onContactPress = (key, name, ico, phone) => {
+    this.props.navigation.navigate("Details", {key: key, name: name, ico: ico, phone: phone});
   }
 
   onButtonPress = () => {
@@ -54,7 +56,7 @@ export default class ContactList extends React.Component {
             title={item.name}
             leftIcon={{ name: item.icon }}
             subtitle={item.phone}
-            onPress={() => this.onContactPress()}
+            onPress={() => this.onContactPress(i, item.name, item.icon, item.phone)}
           />
         );
       });
