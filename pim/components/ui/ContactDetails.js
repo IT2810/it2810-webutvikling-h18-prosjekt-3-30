@@ -25,7 +25,7 @@ export default class ContactDetails extends React.Component {
       <View style={styles.container}>
         <View style={styles.colorBar} />
         <View style={styles.circle} />
-        <Icon name='ios-arrow-back' underlayColor={'#FFD275'} type='ionicon' size={26} color={'#FCF8EF'} onPress={() => {this.onPress()}}/>
+        <Icon name='ios-arrow-back' underlayColor={'#FFD275'} type='ionicon' containerStyle={{padding: 10}} size={26} color={'#FCF8EF'} onPress={() => {this.onPress()}}/>
         <View style={styles.details}>
           <View>
             <Icon name={this.state.icon} size={200} color={'lightgray'}/>
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'flex-start',
-    padding: 20,
     justifyContent: 'flex-start',
     backgroundColor: '#fff',
   },
@@ -50,19 +49,17 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: '#FFD275',
     height: 125,
-    width: 1000,
+    width: '100%',
     zIndex: -1
-
   },
   circle: {
     position: 'absolute',
+    alignSelf: 'center',
     width: 180,
     height: 180,
     borderRadius: 180/2,
     backgroundColor: '#fff',
-    marginLeft: 90,
     marginTop: 44,
-    marginBottom: 10,
     zIndex: 0
   },
   name: {
@@ -74,8 +71,7 @@ const styles = StyleSheet.create({
   details: {
     flex: 1,
     alignSelf: 'center',
-    justifyContent: 'center',
-    marginTop: -200
+    marginTop: -15
   },
   meta: {
     alignSelf: 'center'
