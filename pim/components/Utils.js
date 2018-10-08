@@ -6,13 +6,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // Imports the different ui screens
 import Home from './ui/Home';
 import Todo from './ui/Todo';
-import ScreenTwo from './ui/ScreenTwo';
+import Contacts from './ui/Contacts';
 
 export const TabNav = createMaterialTopTabNavigator(
   { // RouteConfigs (set names and routes for TabNav):
     Home: Home,
     TODOs: Todo,
-    Screen_2: ScreenTwo
+    Contacts: Contacts
   },
   { // TabNavigatorConfig:
     //
