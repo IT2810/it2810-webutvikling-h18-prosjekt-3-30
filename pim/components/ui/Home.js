@@ -8,8 +8,9 @@ import {
    ProgressViewIOS,
    Platform,
    TextInput,
-   Button,
    AsyncStorage} from 'react-native';
+
+   import {Button, FormInput} from 'react-native-elements';
 
 import Expo from "expo";
 import {Pedometer} from "expo";
@@ -24,25 +25,40 @@ export default class Home extends React.Component {
     pastStepCount: 0,
     currentStepCount: 0,
     goalStepCount: 0,
-    inputText: ''
+    inputText: '10000'
   }
 
-  componentDidUpdate(){
-    this._storeData();
+  //Updates the goal when "Set Goal" button is pressed, and stores async
+  handleGoalChange = () => {
+    if (this.state.inputText !== '') {
+      this.setState({goalStepCount: parseInt(this.state.inputText)})
+      this._storeData();
+    }
+
   }
 
+  //Stores goal async
   _storeData() {
-    AsyncStorage.setItem('goal', String(this.state.goalStepCount))
-    console.log("Data stored");
-    console.log(String(this.state.goalStepCount));
+    if (this.state.inputText !== '') {
+      console.log("Storing ...");
+      AsyncStorage.setItem('goal', this.state.inputText)
+      console.log("Goal data stored");
+      console.log(this.state.inputText);
+    }
+
   }
 
+  //Retrieves data async
   _retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('goal');
       console.log("Data retrieved");
       console.log(value);
-      this.setState({goalStepCount: parseInt(value)})
+      if (parseInt(value)>0) {
+        this.setState({goalStepCount: parseInt(value)})
+        this.setState({inputText: value})
+      }
+
     } catch (error) {
       console.error(error);
     }
@@ -57,6 +73,7 @@ export default class Home extends React.Component {
    //Documented here https://docs.expo.io/versions/v30.0.0/sdk/pedometer
   componentWillUnmount() {
     this._unsubscribe();
+    this._storeData();
   }
 
    //Documented here https://docs.expo.io/versions/v30.0.0/sdk/pedometer
@@ -85,7 +102,11 @@ export default class Home extends React.Component {
     start.setDate(end.getDate() -1);
     Pedometer.getStepCountAsync(start, end).then(
       result => {
-        this.setState({ pastStepCount: result.steps });
+        if ((result !== null) && (result !== NaN)) {
+          this.setState({ pastStepCount: result.steps });
+        }
+
+
       },
       error => {
         this.setState({
@@ -101,17 +122,12 @@ export default class Home extends React.Component {
     this._subscription = null;
   };
 
-  handleGoalChange = () => {
-      this.setState({goalStepCount: parseInt(this.state.inputText)})
-      this._storeData();
-  }
-
 
 //TODO The slider can be made a component – not sure if necessary
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
+        <FormInput
           keyboardType = 'numeric'
           onChangeText = {(inputText) => this.setState({inputText})}
           value = {this.state.inputText}
@@ -127,7 +143,7 @@ export default class Home extends React.Component {
           {this.state.pastStepCount}
         </Text>
         <Text>
-          Walk! And watch this go up:
+          Steps taken current session:
           {this.state.currentStepCount}
         </Text>
         <Text>
@@ -147,10 +163,10 @@ const styles = StyleSheet.create({
     flex: 1,
     ... Platform.select({
       ios: {
-        backgroundColor: 'yellow',
+        backgroundColor: '#FFD275',
       },
       android: {
-        backgroundColor: 'yellow'
+        backgroundColor: '#FFD275'
       }
     }),
     alignItems: 'center',
