@@ -11,21 +11,26 @@ export default class TodoItem extends React.Component {
         return (
             <ListItem>
                 <CheckBox
+                    containerStyle={{
+                        width:'25%'
+                    }}
                     checked = {todo.completed}
-                    onPress = {() => checkTodo(todo.title, !todo.completed) }
+                    onPress = {() => checkTodo(todo.title, !todo.completed)}
                 />
                 <Text
                     style={{
                         color: todo.completed ? 'grey' : 'black',
                         textDecorationLine: todo.completed ? 'line-through' : 'none',
+                        marginHorizontal: 10,
+                        fontSize: 18,
                     }}
                 >
                     {todo.title}
                 </Text>
                 <Icon
                     name={'trash'}
-                    type={"foundation"}
-                    color={"blue"}
+                    type={"feather"}
+                    color={"#2980b9"}
                     onPress = {() => onDelete(todo.title)}
                 />
             </ListItem>

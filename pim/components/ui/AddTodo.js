@@ -52,8 +52,12 @@ export default class AddTodo extends React.Component {
         return (
             <ListItem>
                 <CheckBox
+                    containerStyle={{
+                        width: '15%'
+                    }}
                     checked={completed}
                     onPress={() => this.setStateUtil("completed", !completed)}
+                    center={true}
                 />
                 <TextInput
                     style={styles.textInput}
@@ -63,9 +67,9 @@ export default class AddTodo extends React.Component {
                     onSubmitEditing={() => this.saveNewTodo(showNewTodo)}
                 />
                 <Icon
-                    name={'trash'}
-                    type={"foundation"}
-                    color={"blue"}
+                    name={'x'}
+                    type={"feather"}
+                    color={"#c0392b"}
                     onPress={() => showNewTodo(false)}
                 />
             </ListItem>
@@ -75,9 +79,9 @@ export default class AddTodo extends React.Component {
 
 const styles = StyleSheet.create({
     textInput: {
-        width: 250,
+        width: '65%',
         height: 40,
-        fontSize: 23,
-        paddingLeft: 5
+        fontSize: 20,
+        marginHorizontal: 5
     }
 });

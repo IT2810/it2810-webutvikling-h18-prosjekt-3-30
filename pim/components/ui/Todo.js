@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, AsyncStorage, RefreshControl, ScrollView} from 'react-native';
+import {StyleSheet, View, AsyncStorage} from 'react-native';
 import AddButton from './AddTodoButton';
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
@@ -60,14 +60,6 @@ export default class Todo extends React.Component {
         })
     };
 
-    componentDidMount() {
-        this.parseJson();
-    };
-
-    _onRefresh = () => {
-        this.parseJson()
-    };
-
     // Creates TodoItems from state.todo_list
     parseData = () => {
         this.parseJson();
@@ -103,15 +95,8 @@ export default class Todo extends React.Component {
                         onAddNewTodo={this.showNewTodo}
                     />
                 }
-                <ScrollView style={styles.wrapper} refreshControl={
-                    <RefreshControl
-                        refreshing={this.state.refreshing}
-                        onRefresh={this._onRefresh}
-                    />
-                }
-                >
-                    {this.parseData()}
-                </ScrollView>
+                {this.parseData()}
+
             </View>
         );
     }
