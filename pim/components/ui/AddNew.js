@@ -15,6 +15,7 @@ export default class ContactDetails extends React.Component {
     }
   }
 
+  // Sets up AsyncStorage for a list 
   createNewContact() {
     const dataList = []
     if (this.state.name && this.state.phone && this.state.icon) {

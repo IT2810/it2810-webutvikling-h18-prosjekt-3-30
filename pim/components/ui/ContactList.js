@@ -15,6 +15,7 @@ export default class ContactList extends React.Component {
     }
   }
 
+  // Gets the item/list from AsyncStorage and update the states
   parseJson = () => {
     this.setState({refreshing: true});
     try {
@@ -35,10 +36,13 @@ export default class ContactList extends React.Component {
     this.parseJson();
   }
 
+  // Is called when refreshing the contact screen
   _onRefresh = () => {
     this.parseJson();
   }
 
+  // Get triggered when press on contact
+  // Leads to details page
   onContactPress = (key, name, ico, phone) => {
     this.props.navigation.navigate("Details", {key: key, name: name, ico: ico, phone: phone});
   }
@@ -47,6 +51,7 @@ export default class ContactList extends React.Component {
     this.props.navigation.navigate("Add");
   }
 
+  // Sets up the list items from the state list
   parseData = () => {
     if (this.state.list) {
       return this.state.list.map((item, i) => {
@@ -63,6 +68,7 @@ export default class ContactList extends React.Component {
     }
   }
 
+  // Render the contacts ui
   render() {
     return (
       <View style={styles.container}>

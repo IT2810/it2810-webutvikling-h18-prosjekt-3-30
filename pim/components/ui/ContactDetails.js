@@ -23,16 +23,14 @@ export default class ContactDetails extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.colorBar}></View>
+        <View style={styles.colorBar} />
         <View style={styles.circle} />
         <Icon name='ios-arrow-back' underlayColor={'#FFD275'} type='ionicon' size={26} color={'#FCF8EF'} onPress={() => {this.onPress()}}/>
         <View style={styles.details}>
           <View>
-            <View style={styles.imgWrapper}>
-              <Icon name={this.state.icon} size={200} color={'lightgray'}/>
-              <Text style={styles.name}>{this.state.name}</Text>
-              <Text style={styles.meta}>{this.state.phone}</Text>
-            </View>
+            <Icon name={this.state.icon} size={200} color={'lightgray'}/>
+            <Text style={styles.name}>{this.state.name}</Text>
+            <Text style={styles.meta}>{this.state.phone}</Text>
           </View>
         </View>
       </View>
