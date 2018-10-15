@@ -3,7 +3,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "node_modules/.bin/jest"
   },
   "dependencies": {
     "expo": "^30.0.1",
@@ -12,9 +12,20 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-native-elements": "^0.19.1",
     "react-navigation": "^2.17.0",
-    "react-test-renderer": "^16.5.2"
+    "regenerator-runtime": "^0.12.1"
   },
   "devDependencies": {
-    "jest": "^23.6.0"
-  }
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "jest-expo": "^30.0.0",
+    "react-test-renderer": "^16.5.2"
+  },
+  "jest": {
+   "preset": "jest-expo",
+   "transformIgnorePatterns": [
+     "/node_modules/(?!native-base)/"
+   ]
+ }
 }
