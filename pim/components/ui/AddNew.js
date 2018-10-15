@@ -15,7 +15,7 @@ export default class ContactDetails extends React.Component {
     }
   }
 
-  // Sets up AsyncStorage for a list 
+  // Sets up AsyncStorage for a list
   createNewContact() {
     const dataList = []
     if (this.state.name && this.state.phone && this.state.icon) {
@@ -69,7 +69,7 @@ export default class ContactDetails extends React.Component {
           <FormLabel>Full name</FormLabel>
           <FormInput onChangeText={(name) => {this.onChangeName(name)}}/>
           <FormLabel>Phone</FormLabel>
-          <FormInput onChangeText={(phone) => {this.onChangePhone(phone)}}/>
+          <FormInput keyboardType='numeric' onChangeText={(phone) => {this.onChangePhone(phone)}}/>
           <View style={styles.button}>
             <Button raised icon={{name: 'plus', type: 'feather'}} onPress={() => {this.createNewContact()}} title='ADD NEW' />
           </View>

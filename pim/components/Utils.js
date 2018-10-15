@@ -1,12 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {createMaterialTopTabNavigator} from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {createMaterialTopTabNavigator, createStackNavigator} from 'react-navigation';
 
-// Imports the different ui screens
+// Imports the different ui screens for tab navigation
 import Home from './ui/Home';
 import Todo from './ui/Todo';
 import Contacts from './ui/Contacts';
+
+// Imports the contact ui's
+import ContactDetails from './ui/ContactDetails';
+import ContactList from './ui/ContactList';
+import AddNew from './ui/AddNew';
+
+// Sets up stack navigation for the contact page
+export const ScreenNav = createStackNavigator({
+  List: {
+    screen: ContactList,
+    navigationOptions: {
+     header: null
+   }
+  },
+  Details: {
+    screen: ContactDetails,
+    navigationOptions: {
+      header: null
+   }
+ },
+ Add: {
+   screen: AddNew,
+   navigationOptions: {
+     header: null
+  }
+}
+});
 
 export const TabNav = createMaterialTopTabNavigator(
   { // RouteConfigs (set names and routes for TabNav):
