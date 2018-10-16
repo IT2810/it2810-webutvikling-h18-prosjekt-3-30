@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import { StyleSheet, View, AsyncStorage } from 'react-native';
 import { Icon, FormLabel, FormInput, Button } from 'react-native-elements';
 
-import ContactList from './ContactList';
 
 export default class ContactDetails extends React.Component {
   constructor() {
