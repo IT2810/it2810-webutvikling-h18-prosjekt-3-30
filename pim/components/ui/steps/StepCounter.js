@@ -42,7 +42,7 @@ export default class StepCounter extends React.Component {
 
   }
 
-  //Retrieves data async
+  //Retrieves goal data async
   _retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('goal');
