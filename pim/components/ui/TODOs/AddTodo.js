@@ -56,7 +56,9 @@ export default class AddTodo extends React.Component {
             <ListItem>
                 <CheckBox
                     containerStyle={{
-                        width: 42
+                        width: 42,
+                        backgroundColor: "transparent",
+                        borderColor: "transparent"
                     }}
                     checked={completed}
                     onPress={() => this.setStateUtil("completed", !completed)}
@@ -67,6 +69,7 @@ export default class AddTodo extends React.Component {
                     placeholder={"What needs to be done?"}
                     onChangeText={(text) => this.setStateUtil("title", text)}
                     onSubmitEditing={() => this.saveNewTodo(showNewTodo)}
+                    underlineColorAndroid={"#34495e"}
                 />
                 <Icon
                     name={'x'}
@@ -82,8 +85,7 @@ export default class AddTodo extends React.Component {
 const styles = StyleSheet.create({
     textInput: {
         width: '65%',
-        height: 40,
-        fontSize: 20,
-        marginHorizontal: 5
+        marginHorizontal: 5,
+        height: 40
     }
 });
