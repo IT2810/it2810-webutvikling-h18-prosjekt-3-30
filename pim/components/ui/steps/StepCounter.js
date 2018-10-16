@@ -3,23 +3,17 @@ import {
    StyleSheet,
    Text,
    View,
-   AppRegistry,
-   ProgressBarAndroid,
-   ProgressViewIOS,
    Platform,
-   TextInput,
    AsyncStorage} from 'react-native';
 
-   import {Button, FormInput} from 'react-native-elements';
+import {Button, FormInput} from 'react-native-elements';
 
 import Expo from "expo";
 import {Pedometer} from "expo";
 
-//const progBar = require('./progressBar')
+import ProgressBar from './progressBar';
 
-import ProgressBar from './progressBar'
-
-export default class Home extends React.Component {
+export default class StepCounter extends React.Component {
   state = {
     isPedometerAvailable: "checking",
     pastStepCount: 0,
@@ -123,7 +117,6 @@ export default class Home extends React.Component {
   };
 
 
-//TODO The slider can be made a component – not sure if necessary
   render() {
     return (
       <View style={styles.container}>
@@ -161,6 +154,7 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //Useless as of now. Kept as example for later
     ... Platform.select({
       ios: {
         backgroundColor: '#FFD275',
@@ -171,11 +165,6 @@ const styles = StyleSheet.create({
     }),
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  slider: {
-    backgroundColor: 'red',
-    width: 200,
-    height: 30,
   },
   },
 );
