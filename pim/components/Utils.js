@@ -2,7 +2,7 @@ import React from 'react';
 import {createMaterialTopTabNavigator, createStackNavigator} from 'react-navigation';
 
 // Imports the different ui screens for tab navigation
-import Home from './ui/Home';
+import StepCounter from './ui/steps/StepCounter';
 import Todo from './ui/TODOs/Todo';
 import Contacts from './ui/Contacts/Contacts';
 
@@ -35,7 +35,7 @@ export const ScreenNav = createStackNavigator({
 
 export const TabNav = createMaterialTopTabNavigator(
   { // RouteConfigs (set names and routes for TabNav):
-    Home: Home,
+    Steps: StepCounter,
     TODOs: Todo,
     Contacts: Contacts
   },
