@@ -9,7 +9,7 @@ Skrittelleren har funksjonalitet for å telle skritt mens appen er åpen, samt h
 
 TODO-listen har funksjonalitet for å legge til gjøremål, slette gjøremål, og markere gjøremål som gjennomført. Gjøremålene lagres asynkront.
 
-Kontaktlisten har funksjonalitet for å legge til nye kontakter med navn og nummer. Man kan trykke på en kontakt for å komme inn på en detaljert kontaktside (Som ikke har funksjonalitet for ytterligere detaljer). 
+Kontaktlisten har funksjonalitet for å legge til nye kontakter med navn og nummer. Man kan trykke på en kontakt for å komme inn på en detaljert kontaktside (Som per nå ikke viser ytterligere detaljer, men da dette lett kan utvides om man ønsker dette senere). 
 *Merk at når man legger til en kontakt må man oppdatere siden ved å «sveipe nedover fra toppen» for at den nye kontakten skal synes.*
 Kontaktene lagres asynkront.
 
