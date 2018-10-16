@@ -17,7 +17,7 @@ export default class Todo extends React.Component {
     }
 
     // Updates state with data from asyncStorage
-    parseJson = async() => {
+    parseJson = async () => {
         try {
             await AsyncStorage.getItem("TODOS").then((value => {
                 this.setState({
@@ -25,14 +25,14 @@ export default class Todo extends React.Component {
                     refreshing: false
                 })
             }));
-        } catch(error){
+        } catch (error) {
             console.log("Error loading from localStorage")
         }
     };
 
-    syncStorageFromState = async() => {
+    syncStorageFromState = async () => {
         const {todo_list} = this.state;
-        try{
+        try {
             await AsyncStorage.setItem("TODOS", JSON.stringify(todo_list));
         } catch (error) {
             console.log("Error saving to localStorage")
@@ -55,7 +55,7 @@ export default class Todo extends React.Component {
     };
 
     showNewTodo = (show) => {
-        this.setState ({
+        this.setState({
             show_new_todo: show
         })
     };
@@ -85,18 +85,17 @@ export default class Todo extends React.Component {
             <View style={styles.container}>
                 {/* Uses the state-value 'show_new_todo' to determine if the "AddTodo"-component should show*/}
                 {show_new_todo &&
-                    <AddTodo
-                        showNewTodo={this.showNewTodo}
-                    />
+                <AddTodo
+                    showNewTodo={this.showNewTodo}
+                />
                 }
                 {/* Used the same value to hide "AddButton" when "AddTodo" is showing */}
                 {!show_new_todo &&
-                    <AddButton
-                        onAddNewTodo={this.showNewTodo}
-                    />
+                <AddButton
+                    onAddNewTodo={this.showNewTodo}
+                />
                 }
                 {this.parseData()}
-
             </View>
         );
     }

@@ -15,25 +15,28 @@ export default class AddTodo extends React.Component {
         };
     }
 
-    saveNewTodo = async(showNewTodo) => {
-        showNewTodo(show = false);
+    saveNewTodo = async (showNewTodo) => {
         const todoList = [];
-        const todoToBeSaved = {"title": this.state.title, "completed": this.state.completed};
-        todoList.push(todoToBeSaved);
-        try {
-            await AsyncStorage.getItem("TODOS").then((value) => {
-                {/*Checks if Asyncstore is null, and add new list if so. Add todoToBeSaved if not null*/}
-                if (value !== null) {
-                    const d = JSON.parse(value);
-                    d.push(todoToBeSaved);
-                    AsyncStorage.setItem("TODOS", JSON.stringify(d));
-                }
-                else {
-                    AsyncStorage.setItem("TODOS", JSON.stringify(todoList));
-                }
-            });
-        } catch (error) {
-            console.log("Unable to save todo")
+        if (this.state.title) {
+            showNewTodo(show = false);
+            const todoToBeSaved = {"title": this.state.title, "completed": this.state.completed};
+            todoList.push(todoToBeSaved);
+            try {
+                await AsyncStorage.getItem("TODOS").then((value) => {
+                    {/*Checks if Asyncstore is null, and add new list if so. Add todoToBeSaved if not null*/
+                    }
+                    if (value !== null) {
+                        const d = JSON.parse(value);
+                        d.push(todoToBeSaved);
+                        AsyncStorage.setItem("TODOS", JSON.stringify(d));
+                    }
+                    else {
+                        AsyncStorage.setItem("TODOS", JSON.stringify(todoList));
+                    }
+                });
+            } catch (error) {
+                console.log("Unable to save todo")
+            }
         }
     };
 
@@ -53,11 +56,10 @@ export default class AddTodo extends React.Component {
             <ListItem>
                 <CheckBox
                     containerStyle={{
-                        width: '15%'
+                        width: 42
                     }}
                     checked={completed}
                     onPress={() => this.setStateUtil("completed", !completed)}
-                    center={true}
                 />
                 <TextInput
                     style={styles.textInput}
