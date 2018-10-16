@@ -4,13 +4,13 @@ import {createMaterialTopTabNavigator} from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Imports the different ui screens
-import Home from './ui/Home';
+import StepCounter from './ui/steps/StepCounter';
 import Todo from './ui/Todo';
 import Contacts from './ui/Contacts';
 
 export const TabNav = createMaterialTopTabNavigator(
   { // RouteConfigs (set names and routes for TabNav):
-    Home: Home,
+    Steps: StepCounter,
     TODOs: Todo,
     Contacts: Contacts
   },
@@ -43,3 +43,4 @@ export const TabNav = createMaterialTopTabNavigator(
     },
   },
 );
+StepCounter
