@@ -1,8 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, AsyncStorage, RefreshControl } from 'react-native';
-import { ListItem, Icon, Button } from 'react-native-elements';
-
-import ContactDetails from './ContactDetails';
+import { StyleSheet, View, ScrollView, AsyncStorage, RefreshControl } from 'react-native';
+import { ListItem, Button } from 'react-native-elements';
 
 
 export default class ContactList extends React.Component {
@@ -82,7 +80,7 @@ export default class ContactList extends React.Component {
           {this.parseData()}
         </ScrollView>
         <View style={styles.button}>
-          <Button raised onPress={() => {this.onButtonPress()}} title='ADD NEW CONTACT' />
+          <Button raised onPress={() => {this.onButtonPress()}} title='ADD NEW CONTACT' color={"#34495e"}/>
         </View>
       </View>
     );
