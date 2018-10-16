@@ -80,7 +80,7 @@ export default class ContactList extends React.Component {
           {this.parseData()}
         </ScrollView>
         <View style={styles.button}>
-          <Button raised onPress={() => {this.onButtonPress()}} title='ADD NEW CONTACT' />
+          <Button raised onPress={() => {this.onButtonPress()}} title='ADD NEW CONTACT' color={"#34495e"}/>
         </View>
       </View>
     );

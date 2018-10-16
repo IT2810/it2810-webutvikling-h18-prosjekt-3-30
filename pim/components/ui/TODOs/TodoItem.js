@@ -31,7 +31,7 @@ export default class TodoItem extends React.Component {
                 <Icon
                     name={'trash'}
                     type={"feather"}
-                    color={"#2980b9"}
+                    color={"black"}
                     onPress={() => onDelete(todo.title)}
                 />
             </ListItem>

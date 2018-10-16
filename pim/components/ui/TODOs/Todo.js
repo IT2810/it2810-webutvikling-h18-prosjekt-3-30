@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, AsyncStorage} from 'react-native';
-import AddButton from './AddTodoButton';
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
+import {Button, Icon} from "react-native-elements";
 
 
 export default class Todo extends React.Component {
@@ -83,19 +83,25 @@ export default class Todo extends React.Component {
 
         return (
             <View style={styles.container}>
-                {/* Uses the state-value 'show_new_todo' to determine if the "AddTodo"-component should show*/}
-                {show_new_todo &&
-                <AddTodo
-                    showNewTodo={this.showNewTodo}
-                />
-                }
-                {/* Used the same value to hide "AddButton" when "AddTodo" is showing */}
-                {!show_new_todo &&
-                <AddButton
-                    onAddNewTodo={this.showNewTodo}
-                />
-                }
                 {this.parseData()}
+                <View style={styles.addTodo}>
+                    {/* Uses the state-value 'show_new_todo' to determine if the "AddTodo"-component should show*/}
+                    {show_new_todo &&
+                    <AddTodo
+                        showNewTodo={this.showNewTodo}
+                    />
+                    }
+                    {/* Used the same value to hide "AddButton" when "AddTodo" is showing */}
+                    {!show_new_todo &&
+                    <Button
+                        raised
+                        backgroundColor={"#34495e"}
+                        title={"ADD NEW TODO"}
+                        onPress={() => this.showNewTodo(show = true)}>
+                        <Icon name='add'/>
+                    </Button>
+                    }
+                </View>
             </View>
         );
     }
@@ -103,8 +109,14 @@ export default class Todo extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        height: "100%"
     },
+    addTodo: {
+        marginVertical: 10,
+        flex: 1
+    }
 });
