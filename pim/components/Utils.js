@@ -3,13 +3,13 @@ import {createMaterialTopTabNavigator, createStackNavigator} from 'react-navigat
 
 // Imports the different ui screens for tab navigation
 import Home from './ui/Home';
-import Todo from './ui/Todo';
-import Contacts from './ui/Contacts';
+import Todo from './ui/TODOs/Todo';
+import Contacts from './ui/Contacts/Contacts';
 
 // Imports the contact ui's
-import ContactDetails from './ui/ContactDetails';
-import ContactList from './ui/ContactList';
-import AddNew from './ui/AddNew';
+import ContactDetails from './ui/Contacts/ContactDetails';
+import ContactList from './ui/Contacts/ContactList';
+import AddNew from './ui/Contacts/AddNew';
 
 // Sets up stack navigation for the contact page
 export const ScreenNav = createStackNavigator({
