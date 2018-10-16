@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TabNav} from './components/Utils';
+import {TabNav} from './components/AppNav';
 
 export default class App extends React.Component {
   render() {

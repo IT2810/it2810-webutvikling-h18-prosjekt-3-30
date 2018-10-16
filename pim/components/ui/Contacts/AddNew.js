@@ -63,14 +63,14 @@ export default class ContactDetails extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Icon name='ios-arrow-back' type='ionicon' size={26} color={'lightgray'} onPress={() => {this.onArrowPress()}}/>
+        <Icon name='ios-arrow-back' type='ionicon' size={26} color={'#34495e'} onPress={() => {this.onArrowPress()}}/>
         <View style={styles.details}>
           <FormLabel>Full name</FormLabel>
-          <FormInput onChangeText={(name) => {this.onChangeName(name)}}/>
+          <FormInput onChangeText={(name) => {this.onChangeName(name)}} underlineColorAndroid={'#34495e'}/>
           <FormLabel>Phone</FormLabel>
-          <FormInput keyboardType='numeric' onChangeText={(phone) => {this.onChangePhone(phone)}}/>
+          <FormInput keyboardType='numeric' onChangeText={(phone) => {this.onChangePhone(phone)}} underlineColorAndroid={'#34495e'}/>
           <View style={styles.button}>
-            <Button raised icon={{name: 'plus', type: 'feather'}} onPress={() => {this.createNewContact()}} title='ADD NEW' />
+            <Button raised icon={{name: 'plus', type: 'feather'}} onPress={() => {this.createNewContact()}} title='ADD NEW' backgroundColor={'#34495e'} color={"#FCF8EF"} />
           </View>
         </View>
       </View>
@@ -84,12 +84,13 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     padding: 20,
     justifyContent: 'flex-start',
-    backgroundColor: '#fff',
+    backgroundColor: '#FCF8EF',
   },
   details: {
+    width: '100%',
     flex: 1,
     alignSelf: 'center',
-    marginTop: 30
+    marginTop: 40
   },
   button: {
     marginTop: 20

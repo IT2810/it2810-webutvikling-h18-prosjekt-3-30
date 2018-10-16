@@ -80,7 +80,7 @@ export default class ContactList extends React.Component {
           {this.parseData()}
         </ScrollView>
         <View style={styles.button}>
-          <Button raised onPress={() => {this.onButtonPress()}} title='ADD NEW CONTACT' color={"#34495e"}/>
+          <Button raised onPress={() => {this.onButtonPress()}} title='ADD NEW CONTACT' backgroundColor={'#34495e'} color={"#FCF8EF"}/>
         </View>
       </View>
     );
@@ -90,7 +90,7 @@ export default class ContactList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FCF8EF',
     padding: 10,
   },
   wrapper: {
