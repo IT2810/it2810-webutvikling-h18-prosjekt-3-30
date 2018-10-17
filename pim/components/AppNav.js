@@ -3,8 +3,8 @@ import {createMaterialTopTabNavigator} from 'react-navigation';
 
 // Imports the different ui screens for tab navigation
 import StepCounter from './ui/steps/StepCounter';
-import Todo from './ui/todos/Todo';
-import Contacts from './ui/contacts/Contacts';
+import Todo from './ui/TODOs/Todo';
+import Contacts from './ui/Contacts/Contacts';
 
 export const TabNav = createMaterialTopTabNavigator(
   { // RouteConfigs (set names and routes for TabNav):
