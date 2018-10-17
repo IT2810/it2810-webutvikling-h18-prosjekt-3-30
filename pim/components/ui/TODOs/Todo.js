@@ -49,8 +49,7 @@ export default class Todo extends React.Component {
     };
 
     deleteTodo = (todo) => {
-        const temp = this.state.todo_list.filter(t => t.title !== todo);
-        this.state.todo_list = temp;
+        this.state.todo_list.filter(t => t.title !== todo);
         this.syncStorageFromState();
     };
 
