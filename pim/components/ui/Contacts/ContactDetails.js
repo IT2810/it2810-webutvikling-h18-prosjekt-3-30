@@ -27,7 +27,7 @@ export default class ContactDetails extends React.Component {
         <Icon name='ios-arrow-back' underlayColor={'#FFD275'} type='ionicon' containerStyle={{padding: 10}} size={26} color={'#FCF8EF'} onPress={() => {this.onPress()}}/>
         <View style={styles.details}>
           <View>
-            <Icon name={this.state.icon} size={200} color={'lightgray'}/>
+            <Icon name={this.state.icon} size={200} color={'#c3c7cc'}/>
             <Text style={styles.name}>{this.state.name}</Text>
             <Text style={styles.meta}>{this.state.phone}</Text>
           </View>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    backgroundColor: '#fff',
+    backgroundColor: '#FCF8EF',
   },
   colorBar: {
     position: 'absolute',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     width: 180,
     height: 180,
     borderRadius: 180/2,
-    backgroundColor: '#fff',
+    backgroundColor: '#FCF8EF',
     marginTop: 44,
     zIndex: 0
   },
