@@ -31,7 +31,7 @@ export default class StepCounter extends React.Component {
 
   }
 
-  //Stores goal async
+  //Stores goal data async
   _storeData() {
     if (this.state.inputText !== '') {
       console.log("Storing ...");
@@ -42,7 +42,7 @@ export default class StepCounter extends React.Component {
 
   }
 
-  //Retrieves data async
+  //Retrieves goal data async
   _retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('goal');
