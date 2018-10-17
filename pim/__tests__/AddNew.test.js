@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import AddNew from '../components/ui/contacts/AddNew';
+import AddNew from '../components/ui/Contacts/AddNew';
 
 it('renders ContactList correctly', () => {
   const tree = renderer.create(

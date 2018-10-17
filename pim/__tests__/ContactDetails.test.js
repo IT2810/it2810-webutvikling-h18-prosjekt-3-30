@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import ContactDetails from '../components/ui/contacts/ContactDetails';
+import ContactDetails from '../components/ui/Contacts/ContactDetails';
 
 it('renders contacts correctly', () => {
   const tree = renderer.create(
