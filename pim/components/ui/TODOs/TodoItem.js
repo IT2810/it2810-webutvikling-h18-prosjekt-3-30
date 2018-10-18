@@ -33,6 +33,7 @@ export default class TodoItem extends React.Component {
                     name={'trash'}
                     type={"feather"}
                     color={"black"}
+                    underlayColor={'#FCF8EF'}
                     onPress={() => onDelete(todo.title)}
                 />
             </ListItem>

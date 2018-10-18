@@ -113,19 +113,12 @@ export default class StepCounter extends React.Component {
 
 
     render() {
+        let goalTextColor = "#FCF8EF";
+        if ((this.state.pastStepCount/this.state.goalStepCount) >= 1){
+            goalTextColor = "#000000";
+        }
         return (
             <View style={styles.container}>
-                <View style={styles.stepprogress}>
-                    <Text style={{fontSize: 50}}>
-                        {this.state.pastStepCount}
-                        <Text style={{fontSize: 12}}>
-                            Steps last 24h
-                        </Text>
-                    </Text>
-                    <ProgressBar
-                        pastStepCount={this.state.pastStepCount}
-                        goalStepCount={this.state.goalStepCount}/>
-                </View>
                 <View style={styles.stepgoal}>
                     <FormInput
                         keyboardType='numeric'
@@ -145,6 +138,21 @@ export default class StepCounter extends React.Component {
                         }}
                         title="SET GOAL"
                     />
+                </View>
+                <View style={styles.stepprogress}>
+                    <Text style={{fontSize: 50}}>
+                        {this.state.pastStepCount}
+                        <Text style={{fontSize: 12}}>
+                            Steps last 24h
+                        </Text>
+                    </Text>
+                    <ProgressBar
+                        pastStepCount={this.state.pastStepCount}
+                        goalStepCount={this.state.goalStepCount}/>
+                    <Text
+                        style={{fontSize: 12, color:goalTextColor}}>
+                        Well done, you reached your goal!
+                    </Text>
                 </View>
             </View>
         );
@@ -170,7 +178,7 @@ const styles = StyleSheet.create({
         },
         stepprogress: {
             flex: 2,
-            justifyContent: "center",
+            justifyContent: "flex-start",
             alignItems: "center"
 
         },
@@ -178,8 +186,8 @@ const styles = StyleSheet.create({
             flex: 1,
             flexDirection: "row",
             justifyContent: "center",
-            alignItems: "flex-end",
-            marginBottom: 10
+            alignItems: "flex-start",
+            marginTop: 10
         }
     },
 );

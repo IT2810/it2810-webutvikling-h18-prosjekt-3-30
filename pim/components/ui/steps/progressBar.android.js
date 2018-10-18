@@ -37,7 +37,7 @@ export default class ProgressBar extends React.Component {
 
 const styles = StyleSheet.create({
     progressBar: {
-        width: 400,
+        width: 350,
         height: 30
     }
 })

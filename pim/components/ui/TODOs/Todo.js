@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, AsyncStorage, ScrollView} from 'react-native';
+import {StyleSheet, View, AsyncStorage, ScrollView, RefreshControl} from 'react-native';
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 import {Button, Icon} from "react-native-elements";
@@ -18,6 +18,7 @@ export default class Todo extends React.Component {
 
     // Updates state with data from asyncStorage
     parseJson = async () => {
+        this.setState({refreshing: true});
         try {
             await AsyncStorage.getItem("TODOS").then((value => {
                 this.setState({
@@ -30,7 +31,7 @@ export default class Todo extends React.Component {
         }
     };
 
-    syncStorageFromState = async () => {
+    saveState = async () => {
         const {todo_list} = this.state;
         try {
             await AsyncStorage.setItem("TODOS", JSON.stringify(todo_list));
@@ -45,12 +46,13 @@ export default class Todo extends React.Component {
                 t.completed = completed;
             }
         });
-        this.syncStorageFromState();
+        this.saveState();
     };
 
     deleteTodo = (todo) => {
-        this.state.todo_list.filter(t => t.title !== todo);
-        this.syncStorageFromState();
+        const temp = this.state.todo_list.filter(t => t.title !== todo);
+        this.state.todo_list = temp;
+        this.saveState();
     };
 
     showNewTodo = (show) => {
@@ -59,9 +61,17 @@ export default class Todo extends React.Component {
         })
     };
 
+    componentDidMount() {
+        this.parseJson();
+    }
+
+    // Is called when refreshing the contact screen
+    _onRefresh = () => {
+        this.parseJson();
+    }
+
     // Creates TodoItems from state.todo_list
     parseData = () => {
-        this.parseJson();
         const {todo_list} = this.state;
         if (todo_list) {
             return todo_list.map((item, i) => {
@@ -88,7 +98,12 @@ export default class Todo extends React.Component {
                     showNewTodo={this.showNewTodo}
                 />
                 }
-                <ScrollView style={styles.todoItems}>
+                <ScrollView style={styles.todoItems} refreshControl={
+                    <RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this._onRefresh}
+                    />
+                }>
                     {this.parseData()}
                 </ScrollView>
                 <View style={styles.addTodo}>
