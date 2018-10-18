@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, AsyncStorage, ScrollView, RefreshControl} from 'react-native';
+import {StyleSheet, View, AsyncStorage, ScrollView} from 'react-native';
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 import {Button, Icon} from "react-native-elements";
@@ -18,12 +18,10 @@ export default class Todo extends React.Component {
 
     // Updates state with data from asyncStorage
     parseJson = async () => {
-        this.setState({refreshing: true});
         try {
             await AsyncStorage.getItem("TODOS").then((value => {
                 this.setState({
-                    todo_list: JSON.parse(value),
-                    refreshing: false
+                    todo_list: JSON.parse(value)
                 })
             }));
         } catch (error) {
@@ -62,16 +60,12 @@ export default class Todo extends React.Component {
     };
 
     componentDidMount() {
-        this.parseJson();
-    }
-
-    // Is called when refreshing the contact screen
-    _onRefresh = () => {
-        this.parseJson();
+        this.parseData();
     }
 
     // Creates TodoItems from state.todo_list
     parseData = () => {
+        this.parseJson();
         const {todo_list} = this.state;
         if (todo_list) {
             return todo_list.map((item, i) => {
@@ -98,12 +92,7 @@ export default class Todo extends React.Component {
                     showNewTodo={this.showNewTodo}
                 />
                 }
-                <ScrollView style={styles.todoItems} refreshControl={
-                    <RefreshControl
-                        refreshing={this.state.refreshing}
-                        onRefresh={this._onRefresh}
-                    />
-                }>
+                <ScrollView style={styles.todoItems}>
                     {this.parseData()}
                 </ScrollView>
                 <View style={styles.addTodo}>
