@@ -28,7 +28,6 @@ export default class StepCounter extends React.Component {
             this.setState({goalStepCount: parseInt(this.state.inputText)})
             this._storeData();
         }
-
     }
 
     //Stores goal async
@@ -36,7 +35,6 @@ export default class StepCounter extends React.Component {
         if (this.state.inputText !== '') {
             AsyncStorage.setItem('goal', this.state.inputText)
         }
-
     }
 
     //Retrieves data async
