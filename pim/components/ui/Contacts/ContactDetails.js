@@ -16,7 +16,7 @@ export default class ContactDetails extends React.Component {
   }
 
   onPress = () => {
-    this.props.navigation.navigate("List");
+    this.props.navigation.goBack();
   }
 
   render() {

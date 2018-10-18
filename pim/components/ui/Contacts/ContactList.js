@@ -10,19 +10,19 @@ export default class ContactList extends React.Component {
     this.state = {
       list: '',
       refreshing: false
-    }
+    };
   }
 
   // Gets the item/list from AsyncStorage and update the states
-  parseJson = () => {
+  parseJson = async () => {
     this.setState({refreshing: true});
     try {
-      AsyncStorage.getItem('contact_key').then((value) => {
+       await AsyncStorage.getItem('contact_key').then((value) => {
         this.setState({
           list: JSON.parse(value),
           refreshing: false
-        })
-      })
+        });
+      });
     }
     catch (e)
     {

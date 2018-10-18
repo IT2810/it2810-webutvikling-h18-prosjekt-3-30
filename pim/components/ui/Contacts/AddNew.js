@@ -11,21 +11,21 @@ export default class ContactDetails extends React.Component {
       name: '',
       phone: '',
       icon: 'account-circle'
-    }
+    };
   }
 
   // Sets up AsyncStorage for a list
-  createNewContact() {
-    const dataList = []
+  createNewContact = async () => {
+    const dataList = [];
     if (this.state.name && this.state.phone && this.state.icon) {
       const data = {
         name: this.state.name,
         phone: this.state.phone,
         icon: this.state.icon,
-      }
-      dataList.push(data)
+      };
+      dataList.push(data);
       try {
-        AsyncStorage.getItem('contact_key').then((value) => {
+        await AsyncStorage.getItem('contact_key').then((value) => {
           if (value !== null) {
             const d = JSON.parse(value);
             d.push(data);
@@ -49,7 +49,7 @@ export default class ContactDetails extends React.Component {
   };
 
   onArrowPress = () => {
-    this.props.navigation.navigate("List");
+    this.props.navigation.goBack();
   }
 
   onChangeName(name) {
@@ -63,7 +63,7 @@ export default class ContactDetails extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Icon name='ios-arrow-back' type='ionicon' size={26} color={'#34495e'} onPress={() => {this.onArrowPress()}}/>
+        <Icon name='ios-arrow-back' type='ionicon' size={26} color={'#34495e'} underlayColor={'#FCF8EF'} onPress={() => {this.onArrowPress()}}/>
         <View style={styles.details}>
           <FormLabel>Full name</FormLabel>
           <FormInput onChangeText={(name) => {this.onChangeName(name)}} underlineColorAndroid={'#34495e'}/>
