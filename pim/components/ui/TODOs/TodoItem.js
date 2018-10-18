@@ -12,7 +12,9 @@ export default class TodoItem extends React.Component {
             <ListItem>
                 <CheckBox
                     containerStyle={{
-                        width: 42
+                        width: 42,
+                        backgroundColor: "transparent",
+                        borderColor: "transparent"
                     }}
                     checked={todo.completed}
                     onPress={() => checkTodo(todo.title, !todo.completed)}
@@ -22,7 +24,6 @@ export default class TodoItem extends React.Component {
                         color: todo.completed ? 'grey' : 'black',
                         textDecorationLine: todo.completed ? 'line-through' : 'none',
                         marginHorizontal: 10,
-                        fontSize: 18,
                         maxWidth: '70%'
                     }}
                 >
