@@ -75,6 +75,7 @@ export default class AddTodo extends React.Component {
                     name={'x'}
                     type={"feather"}
                     color={"#c0392b"}
+                    underlayColor={'#FCF8EF'}
                     onPress={() => showNewTodo(false)}
                 />
             </ListItem>
