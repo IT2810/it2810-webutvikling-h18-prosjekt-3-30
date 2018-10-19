@@ -11,8 +11,7 @@ export default class Todo extends React.Component {
         super(props);
         this.state = {
             todo_list: [],
-            show_new_todo: false,
-            refreshing: false
+            show_new_todo: false
         };
     }
 
@@ -38,18 +37,37 @@ export default class Todo extends React.Component {
         }
     };
 
+    saveTodo = (title, completed) => {
+        const todoList = this.state.todo_list;
+        if (title) {
+            this.showNewTodo(show = false);
+            const todoToBeSaved = {"title": title, "completed": completed};
+            todoList.push(todoToBeSaved);
+            this.setState({
+                todo_list:todoList
+            });
+            this.saveState();
+        }
+    };
+
     updateTodo = (todo, completed) => {
-        this.state.todo_list.map((t) => {
+        let todo_list = this.state.todo_list;
+        todo_list.map(t => {
             if (t.title === todo) {
                 t.completed = completed;
             }
+        });
+        this.setState({
+            todo_list:todo_list
         });
         this.saveState();
     };
 
     deleteTodo = (todo) => {
         const temp = this.state.todo_list.filter(t => t.title !== todo);
-        this.state.todo_list = temp;
+        this.setState  ({
+            todo_list:temp
+        });
         this.saveState();
     };
 
@@ -60,12 +78,12 @@ export default class Todo extends React.Component {
     };
 
     componentDidMount() {
-        this.parseData();
-    }
+        this.parseJson();
+    };
 
     // Creates TodoItems from state.todo_list
     parseData = () => {
-        this.parseJson();
+        //this.parseJson();
         const {todo_list} = this.state;
         if (todo_list) {
             return todo_list.map((item, i) => {
@@ -79,7 +97,7 @@ export default class Todo extends React.Component {
                 );
             });
         }
-    }
+    };
 
     render() {
         const {show_new_todo} = this.state;
@@ -89,7 +107,7 @@ export default class Todo extends React.Component {
                 {/* Uses the state-value 'show_new_todo' to determine if the "AddTodo"-component should show*/}
                 {show_new_todo &&
                 <AddTodo
-                    showNewTodo={this.showNewTodo}
+                    saveTodo={this.saveTodo} showNewTodo={this.showNewTodo}
                 />
                 }
                 <ScrollView style={styles.todoItems}>
