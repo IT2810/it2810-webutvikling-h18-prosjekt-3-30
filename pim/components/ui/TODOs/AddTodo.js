@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, AsyncStorage, StyleSheet} from 'react-native';
+import {TextInput, StyleSheet} from 'react-native';
 import {Icon, CheckBox} from 'react-native-elements';
 import {ListItem} from "native-base";
 
@@ -15,32 +15,6 @@ export default class AddTodo extends React.Component {
         };
     }
 
-    saveNewTodo = async (showNewTodo) => {
-        const todoList = [];
-        if (this.state.title) {
-            showNewTodo(show = false);
-            const todoToBeSaved = {"title": this.state.title, "completed": this.state.completed};
-            todoList.push(todoToBeSaved);
-            try {
-                await AsyncStorage.getItem("TODOS").then((value) => {
-                    {/*Checks if Asyncstore is null, and add new list if so. Add todoToBeSaved if not null*/
-                    }
-                    if (value !== null) {
-                        const d = JSON.parse(value);
-                        d.push(todoToBeSaved);
-                        AsyncStorage.setItem("TODOS", JSON.stringify(d));
-                    }
-                    else {
-                        AsyncStorage.setItem("TODOS", JSON.stringify(todoList));
-                    }
-                });
-            } catch (error) {
-                console.log("Unable to save todo")
-            }
-        }
-    };
-
-
     // Sets newTodo-values in state, with properties: title, completed
     setStateUtil = (property, value) => {
         this.setState({
@@ -48,10 +22,10 @@ export default class AddTodo extends React.Component {
         });
     };
 
-
     render() {
-        const {completed} = this.state;
-        const {showNewTodo} = this.props;
+        const {completed, title} = this.state;
+        const {saveTodo, showNewTodo} = this.props;
+
         return (
             <ListItem>
                 <CheckBox
@@ -68,7 +42,7 @@ export default class AddTodo extends React.Component {
                     clearTextOnFocus={true}
                     placeholder={"What needs to be done?"}
                     onChangeText={(text) => this.setStateUtil("title", text)}
-                    onSubmitEditing={() => this.saveNewTodo(showNewTodo)}
+                    onSubmitEditing={() => saveTodo(title, completed)}
                     underlineColorAndroid={"#34495e"}
                 />
                 <Icon
