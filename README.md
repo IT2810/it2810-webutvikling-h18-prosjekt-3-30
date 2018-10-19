@@ -6,7 +6,7 @@
 Prosjektet er en tredelt react native-applikasjon med en skritteller, en todo-liste og en kontaktliste. Vi valgte å dele appen i tre egentlig helt uavhengige deler, og gav hvert av gruppemedlemmene ansvaret for en egen del. Slik fikk alle like god mulighet til å bli kjent med react native. 
 
 ### Skritteller
-Skrittelleren har funksjonalitet for å telle skritt mens appen er åpen, samt holde tellingen på antall skritt gått det siste døgnet. Dette gjøres gjennom iOS' Core Motion og Androids Google Fit. Det er også funksjonalitet for å sette et mål for antall skritt siste døgn, og appen viser en bar som indikerer progresjon mot målet.
+Skrittelleren har funksjonalitet for å holde tellingen på antall skritt gått det siste døgnet. Dette gjøres gjennom iOS' Core Motion og Androids Google Fit. Det er også funksjonalitet for å sette et mål for antall skritt siste døgn, og appen viser en bar som indikerer progresjon mot målet.
 
 ### TODO-liste
 TODO-listen har funksjonalitet for å legge til gjøremål, slette gjøremål, og markere gjøremål som gjennomført. Listen oppdateres ved interaksjon fra brukeren.
