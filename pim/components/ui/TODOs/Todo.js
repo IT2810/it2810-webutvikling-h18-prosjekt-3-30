@@ -38,7 +38,10 @@ export default class Todo extends React.Component {
     };
 
     saveTodo = (title, completed) => {
-        const todoList = this.state.todo_list;
+        let todoList = this.state.todo_list;
+        if (todoList === null){
+            todoList = [];
+        }
         if (title) {
             this.showNewTodo(show = false);
             const todoToBeSaved = {"title": title, "completed": completed};
