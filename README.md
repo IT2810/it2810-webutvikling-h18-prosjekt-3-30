@@ -163,6 +163,7 @@ Vi har forsøkt å sette opp tester for asynkron lagring, men uten hell.  Vi har
 
 <details>
   <summary>Klikk for å se detaljert beskrivelse</summary>
+	
 Videoen som ble forsøkt fulgt er [linket til her](https://www.youtube.com/watch?time_continue=532&v=uo0psyTxgQM). Videoen er også tekstlig beskrevet på [denne siden](https://www.leighhalliday.com/testing-asynchronous-components-mocks-jest)
 
 Vår kode ser slik ut:
